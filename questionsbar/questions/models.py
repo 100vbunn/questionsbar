@@ -26,4 +26,4 @@ class Answer(models.Model):
 
 # class Urlinf(models.Model):
 #     url_addr = models.CharField(max_length=100, blank=True, null=True)
-
+#
