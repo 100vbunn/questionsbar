@@ -1,0 +1,19 @@
+{% extends "questions/base.html" %}
+
+{% block content %}
+<div id="formContent">
+    {% if question %}
+        {% for item in question %}
+            <h1><b>{{ item.text }}</b></h1><br>
+			
+            {% if item.qrcode %}
+            <img src="{{ item.qrcode.url }}" /><br>
+            {% endif %}
+            {{item.date|date:"d.m.Y H:i:s"}}<br>
+
+        {% endfor %}
+    {% else %}
+    <p>No questions.</p>
+    {% endif %}
+</div>
+{% endblock content %}

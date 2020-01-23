@@ -1,0 +1,20 @@
+{% extends "questions/base.html" %}
+
+{% block content %}
+<div id="formContent">
+<h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите имя</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label>Введите паролъ</label><br>
+            <input type="password" name="password" />
+        </p>
+        <input type="submit" value="Войти" >
+    </form>
+</h2>
+<div>
+{% endblock content %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; Charset=UTF-8">
+        <title>Questions</title>
+        {% load static %}
+        <script type="text/javascript" src="{%static 'bootstrap.min.js'%}"></script>
+        <link type="text/css" href="{% static 'bootstrap.min.css'%}" rel="stylesheet"/>
+		<link type="text/css" href="{% static 'base.css'%}" rel="stylesheet"/>
+    </head>
+
+    <body>
+
+		<div class=wrapper1>
+        <div id="formContent">
+		{% if question %}
+            <h1><b>{{ question.text }}</b></h1><br>
+            {% if question.qrcode %}
+            <img src="{{ question.qrcode.url }}" /><br>
+            {% endif %}
+            {{question.date|date:"d.m.Y H:i:s"}}<br>
+		{% else %}
+			<p>No questions.</p>
+		{% endif %}
+		</div>
+		</div>
+    </body>
+
+</html>

@@ -1,0 +1,36 @@
+{% extends "questions/base.html" %}
+
+{% block content %}
+
+{% if question %}
+        {% for item in question %}
+            <b>{{ item.text }}</b><br>
+			<b>{{ item.id }}</b><br>
+            {{item.date|date:"d.m.Y H:i:s"}}<br>
+            ************************************<br>
+            
+        {% endfor %}
+    {% else %}
+    <p>No questions.</p>
+{% endif %}
+
+
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Имя фамилия:</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label>Класс:</label><br>
+            <input type="text" name="classname" />
+        </p>
+        <p>
+            <label>Ваш ответ:</label><br>
+            <input type="text" name="answer" />
+        </p>
+        <input type="submit" value="Ответить" >
+    </form>
+
+{% endblock content%}

@@ -1,0 +1,28 @@
+{% extends "questions/base.html" %}
+
+{% block content %}
+<div id="formContent">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите вопрос:</label><br>
+			<p><textarea rows="5" cols="30" name="text"></textarea></p>
+        </p>
+        <input type="submit" value="Добавить" >
+    </form>
+    <br>
+	<h2>
+    {% if question_list %}
+        {% for question in question_list %}
+            {{question.text}}<br>
+            {{question.date|date:"d.m.Y H:i:s"}}<br>
+            <a href="{{ question.id }}">Ответы</a><br>
+            <a href="delete/{{ question.id }}">Удалить</a><br>
+        {% endfor %}
+    {% else %}
+    <p>No questions.</p>
+    {% endif %}
+	</h2>
+</div>
+
+{% endblock content %}

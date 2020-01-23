@@ -1,0 +1,68 @@
+body - «сырое» содержимое запроса в виде объекта типа bytes.
+
+Методы, поддерживаемые классом HttpRequest:
+get_host () - возвращает строку с комбинацией IР-адреса (или доменного имени, если его удастся определить) и номера ТСР-порта, через который работает
+веб-сервер;
+
+get_port () - возвращает строку с номером ТСР-порта, через который работает
+веб-сервер;
+
+get_full_path () - возвращает полный путь к текущей странице;
+build_absolute_uri (<путь>) - строит полный интернет-адрес на основе доменного имени (IР-адреса) сервера и указанного пути:
+# Будет выведено: http://localhost:8000/test/uri/180
+
+is_secure () - возвращает True, если обращение выполнялось по протоколу
+HTTPS, и False - если по протоколу НТТР;
+
+is_ajax () - возвращает True, если это АJАХ-запрос, и False - если обычный.
+АJАХ-запросы выявляются фреймворком по наличию в запросе заголовка
+НТТР- X_REQUESTED_WITH со значением "XМLHttpRequest ".
+
+example: str_host = request.get_host()
+
+********************************************************************
+
+def detail(request, bb_id):
+try:
+    bb = Bb.objects.get(pk=bb_id)
+except Bb.DoesNotExist:
+    raise Http404('Taкoe объявление не существует')
+return HttpResponse( ... )
+
+********************************************************************
+
+StreamingHttpResponse.
+frorn django.http irnport StreamingHttpResponse
+def index(request):
+    resp_content = ('Здесь будет',' главная', ' страница', ' сайта' )
+    resp = StreamingHttpResponse(resp_content,
+            content_type='text/plain ; charset=utf-8' )
+resp['keywords'] = 'Python, Django'
+return resp
+
+********************************************************************
+
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# mypath = os.path.join(BASE_DIR, "tests")
+# print("BASE_DIR: "+ BASE_DIRm)
+# print("mypath: "+ mypath)
+# # get directory str
+# print("os.getcwd: "+ os.getcwd())
+# url11 = request.build_absolute_uri()
+# url12 = request.build_absolute_uri('qwer/123')
+# print(url11, url12)
+
+
+FileResponce.
+filenarne = r'c:/archives/archive.zip'
+return FileResponse(open(filenarne, 'rb'), as_attachment=True)
+
+********************************************************************
+
+Создать запись в модели БД из консоли:
+$ python manage.py shell
+
+>>> from questions.models import Urlinf
+>>> q = Urlinf(url_addr="http://ololotrololo")
+>>> q.save()
+

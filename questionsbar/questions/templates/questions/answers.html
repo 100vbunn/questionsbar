@@ -1,0 +1,16 @@
+{% extends "questions/base.html" %}
+
+{% block content %}
+    <br>
+    {% if answers %}
+        {% for answer in answers %}
+            <b>{{ answer.owner }} | {{answer.classname}}</b><br>
+            {{answer.text}}<br>
+            {{answer.date|date:"d.m.Y H:i:s"}}<br>
+            ************************************<br>
+        {% endfor %}
+    {% else %}
+    <p>No answers.</p>
+    {% endif %}
+
+{% endblock content %}
