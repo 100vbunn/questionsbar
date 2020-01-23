@@ -63,6 +63,6 @@ return FileResponse(open(filenarne, 'rb'), as_attachment=True)
 $ python manage.py shell
 
 >>> from questions.models import Urlinf
->>> q = Urlinf(url_addr="http://ololotrololo")
+>>> q = Urlinf(url_addr="http://ololotrolo")
 >>> q.save()
 
