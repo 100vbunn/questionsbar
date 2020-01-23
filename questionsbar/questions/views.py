@@ -150,7 +150,7 @@ def show_answer(request, q_id):
 
 
 # def getfile(request, filename):
-#     print("def getfile*************************")
+#     print("def getfile*******")
 #     response = FileResponse(open(filename, 'rb'))
 #     print("FileName == " + filename)
 #     return response
